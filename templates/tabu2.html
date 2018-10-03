@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/jquery-3.3.1.min.js"></script>
+    <!--Tabulator extensions-->
+    <link href="../static/tabulator/dist/css/tabulator_site.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/tabulator/dist/js/tabulator.min.js"></script>
+    <script type="text/javascript" src="../static/tabulator/dist/js/modules/format.min.js"></script>
+
+</head>
+<body>
+    <div id="example-table"></div>
+
+</body>
+
+<script>
+    var table = new Tabulator("#example-table", {
+ 	height:210, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+ 	layout:"fitColumns", //fit columns to width of table (optional)
+ 	columns:[ //Define Table Columns
+	 	{title:"Name", field:"name", width:150},
+	 	{title:"Age", field:"age", align:"left", formatter:"progress"},
+	 	{title:"Favourite Color", field:"col"},
+	 	{title:"Date Of Birth", field:"dob", align:"center"},
+        {title:"Bill", field:"amount", align:"left"},
+ 	],
+ 	rowClick:function(e, row){ //trigger an alert message when the row is clicked
+ 		alert("Row " + row.getData().id + " Clicked!!!!");
+ 	},
+    });
+
+    var tabledata = [
+	{"id":"1", "name":"Oli Bob1", "age":"11", "col":"red", "dob":"01/01/2018", "amount":"1000"},
+    {"id":"2", "name":"Oli Bob2", "age":"12", "col":"blue", "dob":"02/02/2018", "amount":"2000"},
+    {"id":"3", "name":"Oli Bob3", "age":"13", "col":"green", "dob":"03/03/2016", "amount":"3000"},
+    {"id":"4", "name":"Oli Bob4", "age":"14", "col":"yellow", "dob":"04/04/2018", "amount":"4000"},
+    {"id":"5", "name":"Oli Bob5", "age":"15", "col":"black", "dob":"05/05/2017", "amount":"5000"},
+	// {id:2, name:"Mary May", age:"1", col:"blue", dob:"02/03/1982"},
+	// {id:3, name:"Christine Lobowski", age:"42", col:"green", dob:"03/05/1982"},
+	// {id:4, name:"Brendon Philips", age:"125", col:"orange", dob:"01/08/1980"},
+	// {id:5, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"06/01/1999"},
+];
+
+//load sample data into the table
+table.setData(tabledata);
+</script>
+
+
+</html>
