@@ -37,7 +37,7 @@ def user():
                 {"username": r[0], "first_name": r[1], "last_name": r[2], "mobile_num": r[3], "admin_prev": str(r[4])})
         return jsonify({'status': 'ok', 'entries': recs, 'count': len(recs)})
 
-@app.route('/register', methods=['POST'])
+@app.route('/register')
 def register():
     res = spcall('register', ('joren35','Joren Mundane','Pacaldo', 'celeron0912', '09675974534', False), True)
 
