@@ -39,7 +39,7 @@ def user():
 
 @app.route('/register')
 def register():
-    res = spcall('register', ('joren35','Joren Mundane','Pacaldo', 'celeron0912', '09675974534', False), True)
+    res = spcall('register', ('joren123','Joren Mundane123','Pacaldo123', 'celeron0912123', '09675974534123', False), True)
 
     if 'Error' in res[0][0]:
         return jsonify({'status': 'error', 'message': res[0][0]})
