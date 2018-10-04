@@ -25,12 +25,18 @@ create or replace function register(in par_username text, in par_firstname text,
 $$
   declare
     loc_res text;
+	loc_username text;
 
   begin
+  	select into loc_username username from account where username = par_username;
+	if loc_username isnull then
      insert into account(username,firstname,lastname,password,mobile_num,admin_prev) values
       (par_username,par_firstname,par_lastname, par_password, par_mobile, par_admin_prev);
       loc_res = 'ok';
-      return loc_res;
+	else
+	 loc_res = 'Error Username Exist';
+	 end if;
+     return loc_res;
   end;
 $$
 LANGUAGE plpgsql;
