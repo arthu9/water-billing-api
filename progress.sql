@@ -28,9 +28,9 @@ $$
 
   begin
      insert into account(username,firstname,lastname,password,mobile_num,admin_prev) values
-      (par_username,par_firstname,par_lastname, par_password, par_mobile_num, par_admin_prev);
+      (par_username,par_firstname,par_lastname, par_password, par_mobile, par_admin_prev);
       loc_res = 'ok';
-      return loc_res
+      return loc_res;
   end;
 $$
 LANGUAGE plpgsql;
