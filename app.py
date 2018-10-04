@@ -37,9 +37,10 @@ def user():
                 {"username": r[0], "first_name": r[1], "last_name": r[2], "mobile_num": r[3], "admin_prev": str(r[4])})
         return jsonify({'status': 'ok', 'entries': recs, 'count': len(recs)})
 
-@app.route('/register')
-def register():
-    res = spcall('register', ('joren35','Joren Mundane123','Pacaldo123', 'celeron0912123', '09675974534123', False), True)
+# /register/'joren111'/'jor'/'pacaldo'/'celeron0912'/'09156086751'/True
+@app.route('/register/<string:username>/<string:name>/<string:fname>/<string:password>/<string:mobnum>/<string:admin_prev>')
+def register(username,name,fname,password,mobnum,admin_prev):
+    res = spcall('register', (username, name, fname, password, mobnum, admin_prev), True)
 
     if 'Error' in res[0][0]:
         return jsonify({'status': 'error', 'message': res[0][0]})
