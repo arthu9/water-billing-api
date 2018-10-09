@@ -21,7 +21,7 @@ def spcall(qry, param, commit=False):
 
 @app.route('/')
 def index():
-    return render_template('tabu2.html')
+    return "<h2>Welcome to WaterBillingAPI<h2"
 
 @app.route('/user', methods=['GET'])
 def user():
